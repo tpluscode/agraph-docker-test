@@ -3,7 +3,7 @@ services:
   store:
     type: compose
     services:
-      image: franzinc/agraph:${TAG}
+      image: franzinc/agraph:v7.2.0
       command: /entrypoint.sh
       shm_size: 1g
 
