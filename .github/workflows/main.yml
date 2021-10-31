@@ -24,7 +24,7 @@ jobs:
     steps:  
       - uses: docker-practice/actions-setup-docker@master
       - run: df -h /dev/shm
-      - run: docker compose up
+      - run: docker-compose up
         env:
           TAG: ${{ matrix.tag }}
       - run: curl http://localhost:10035
