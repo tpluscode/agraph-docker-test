@@ -4,6 +4,7 @@ name: CI
 
 on:
   workflow_dispatch:
+  push:
 
 jobs:
   run:
@@ -22,6 +23,7 @@ jobs:
       matrix:
         tag: ["v7.1.0", "v7.2.0"]
     steps:  
+      - uses: actions/checkout@v2.3.5
       - uses: docker-practice/actions-setup-docker@master
       - run: df -h /dev/shm
       - run: docker-compose up
