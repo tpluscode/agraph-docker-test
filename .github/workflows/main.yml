@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  run:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -14,6 +14,17 @@ jobs:
     steps:
       - uses: docker-practice/actions-setup-docker@master
       - run: df -h /dev/shm
-      - run: docker run -d --shm-size 1g franzinc/agraph:${{ matrix.tag }} 
+      - run: docker run -d --shm-size 1g -p 10035:10035 franzinc/agraph:${{ matrix.tag }} 
       - run: curl http://localhost:10035
-
+  compose:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        tag: ["v7.1.0", "v7.2.0"]
+    steps:  
+      - uses: docker-practice/actions-setup-docker@master
+      - run: df -h /dev/shm
+      - run: docker compose up
+        env:
+          TAG: ${{ matrix.tag }}
+      - run: curl http://localhost:10035
