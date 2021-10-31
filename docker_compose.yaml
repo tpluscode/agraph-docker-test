@@ -1,0 +1,7 @@
+version: "3.9"
+services:
+  agraph:
+    image: "franzinc/agraph:${TAG}"
+    shm_size: 1g
+    ports:
+    - "10035:10035"
