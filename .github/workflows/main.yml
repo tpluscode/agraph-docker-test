@@ -44,4 +44,4 @@ jobs:
       - run: curl -fsSL -o /tmp/lando-latest.deb https://github.com/lando/lando/releases/download/v3.4.2/lando-v3.4.2.deb
       - run: sudo dpkg -i /tmp/lando-latest.deb
       - run: lando start
-      - run: npx wait-on http://localhost:10035
+      - run: npx wait-on http://db.lndo.site
