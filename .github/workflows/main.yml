@@ -14,5 +14,5 @@ jobs:
     steps:
       - uses: docker-practice/actions-setup-docker@master
       - run: df -h /dev/shm
-      - run: docker run --shm-size 1g franzinc/agraph:${{ matrix.tag }} 
+      - run: docker run -d --shm-size 1g franzinc/agraph:${{ matrix.tag }} 
 
