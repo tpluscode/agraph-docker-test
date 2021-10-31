@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        tag: ["v7.1.0", "v7.2.0"]
+        tag: ["v7.1.0", "latest"]
     steps:
       - uses: docker-practice/actions-setup-docker@master
       - uses: actions/setup-node@v2.4.1
@@ -22,7 +22,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        tag: ["v7.1.0", "v7.2.0"]
+        tag: ["v7.1.0", "latest"]
     steps:  
       - uses: actions/checkout@v2.3.5
       - uses: docker-practice/actions-setup-docker@master
@@ -34,9 +34,6 @@ jobs:
       - run: npx wait-on http://localhost:10035
   lando:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        tag: ["v7.1.0", "v7.2.0"]
     steps:
       - uses: actions/checkout@v2.3.5
       - uses: docker-practice/actions-setup-docker@master
