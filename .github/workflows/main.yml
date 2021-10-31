@@ -32,3 +32,16 @@ jobs:
         env:
           TAG: ${{ matrix.tag }}
       - run: npx wait-on http://localhost:10035
+  lando:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        tag: ["v7.1.0", "v7.2.0"]
+    steps:
+      - uses: actions/checkout@v2.3.5
+      - uses: docker-practice/actions-setup-docker@master
+      - uses: actions/setup-node@v2.4.1
+      - run: curl -fsSL -o /tmp/lando-latest.deb https://github.com/lando/lando/releases/download/v3.4.2/lando-v3.4.2.deb
+      - run: sudo dpkg -i /tmp/lando-latest.deb
+      - run: lando start
+      - run: npx wait-on http://localhost:10035
