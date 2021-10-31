@@ -1,0 +1,12 @@
+name: test
+services:
+  store:
+    type: compose
+    services:
+      image: franzinc/agraph:${TAG}
+      command: /entrypoint.sh
+      shm_size: 1g
+
+proxy:
+  store:
+    - db.lndo.site:10035
